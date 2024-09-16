@@ -24,11 +24,7 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Clean up old files
-        run: |
-          rm -rf node_modules
-          rm package-lock.json
-          npm cache clean --force
+      
 
       - name: Install dependencies
         run: cd ${{ env.SERVICE_LOCATION }} && npm install --ignore-scripts
@@ -80,11 +76,7 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Clean up old files
-        run: |
-          rm -rf node_modules
-          rm package-lock.json
-          npm cache clean --force
+      
 
       - name: Install dependencies
         run: cd ${{ env.SERVICE_LOCATION }} && npm install --ignore-scripts

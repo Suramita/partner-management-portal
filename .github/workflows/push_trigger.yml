@@ -27,6 +27,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y python2.7
+      - name: Set Python version for npm
+        run: |
+          npm config set python /usr/bin/python2.7
       
 
       - name: Install dependencies

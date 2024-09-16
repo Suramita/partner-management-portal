@@ -16,7 +16,7 @@ jobs:
       SERVICE_NAME: pmp-ui
       SERVICE_LOCATION: pmp-ui
     steps:
-      - name: Checkout code
+      - name: Checkout code 
         uses: actions/checkout@v2
 
       - name: Set up Node.js

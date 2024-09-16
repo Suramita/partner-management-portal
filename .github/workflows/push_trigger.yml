@@ -14,8 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       NAMESPACE: ${{ secrets. dev_namespace_docker_hub }}
-      SERVICE_NAME: pmp-ui
-      SERVICE_LOCATION: pmp-ui
+      
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -23,10 +22,10 @@ jobs:
       - uses: actions/setup-node@v1
         
       - name: npm install
-        run: cd ${{ env.SERVICE_LOCATION }} && npm install --ignore-scripts
+        run: npm install --ignore-scripts
       
       - name: npm build
-        run: cd ${{ env.SERVICE_LOCATION }} && npm run-script build -- --prod --base-href . --output-path=dist
+        run: npm run-script build -- --prod --base-href . --output-path=dist
       
       - name: Setup branch and env 
         run: |
@@ -42,7 +41,7 @@ jobs:
 
       - name: Build image
         run: |
-          cd "./${{env.SERVICE_LOCATION}}"
+          
           docker build . --file Dockerfile --tag ${{ env.SERVICE_NAME }}
 
       - name: Log into registry
@@ -73,18 +72,17 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NAMESPACE: ${{ secrets. dev_namespace_docker_hub }}
-      SERVICE_NAME: pmp-ui
-      SERVICE_LOCATION: pmp-ui
+      
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         
       - name: npm install
-        run: cd ${{ env.SERVICE_LOCATION }} && npm install --ignore-scripts
+        run: npm install --ignore-scripts
       
       - name: npm build
-        run: cd ${{ env.SERVICE_LOCATION }} && npm run-script build -- --prod --base-href . --output-path=dist
+        run: npm run-script build -- --prod --base-href . --output-path=dist
       
       - name: Setup branch and env 
         run: |

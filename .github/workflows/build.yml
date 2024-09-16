@@ -8,7 +8,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  sonarcloud:
+  build:
     name: Build and Analyze with SonarCloud
     runs-on: ubuntu-latest
 
@@ -17,6 +17,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Clean up old files
+        run: |
+          rm -rf node_modules
+          rm package-lock.json
 
       - name: Set up Node.js
         uses: actions/setup-node@v3

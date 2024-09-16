@@ -11,7 +11,7 @@ on:
 jobs:
   build-pmp-ui:
     runs-on: ubuntu-latest
-    env: 
+    env:  
       NAMESPACE: ${{ secrets.dev_namespace_docker_hub }}
       SERVICE_NAME: pmp-ui
       SERVICE_LOCATION: pmp-ui

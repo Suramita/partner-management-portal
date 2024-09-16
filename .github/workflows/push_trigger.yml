@@ -23,6 +23,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16'
+      - name: installing node 
+        run: |
+          sudo npm install --legacy-peer-deps
       - name: Install Python 2
         run: |
           sudo apt-get update
